@@ -32,7 +32,10 @@ values."
    dotspacemacs-configuration-layers
    '(
      yaml
-     python
+     (python :variables
+             python-sort-imports-on-save t
+             python-enable-yapf-format-on-save t
+             python-test-runner 'pytest)
      html
      javascript
      (go :variables
@@ -105,24 +108,23 @@ values."
   ;;  :group 'org-mobile
   ;;  :type 'string)
 
-  ;;GTD 配置
-  ;;(setq org-agenda-files  '("~/SynologyDrive/GTD/Inbox.org"))
-  ;;(setq org-default-notes-file '("~/SynologyDrive/GTD/Todo.org"))
-
-  ;;(global-set-key (kbd "C-c a") 'org-agenda)
-  ;;(global-set-key (kbd "C-c r") 'org-capture)
-
   ;; 替换为国内源
-  (setq configuration-layer--elpa-archives
-        '(("melpa-cn" ."http://elpa.emacs-china.org/melpa/")
-          ("org-cn" ."http://elpa.emacs-china.org/org/")
-          ("gnu-cn" ."http://elpa.emacs-china.org/gnu/")))
+;;  (setq configuration-layer--elpa-archives
+;;        '(("melpa-cn" ."http://elpa.emacs-china.org/melpa/")
+;;          ("org-cn" ."http://elpa.emacs-china.org/org/")
+;;          ("gnu-cn" ."http://elpa.emacs-china.org/gnu/")))
+
+  (setq configuration-layer--elpa-archives 
+	      '(("melpa-cn" ."https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+	        ("gnu-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+	        ("org-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+
 
   ; slime setup
-  (setq inferior-lisp-program "/usr/local/bin/sbcl")
-  (add-to-list 'load-path "~/.spacemacs.d/slime/")
-  (require 'slime)
-  (slime-setup)
+;;  (setq inferior-lisp-program "/usr/bin/sbcl")
+;;  (add-to-list 'load-path "~/.spacemacs.d/slime/")
+;;  (require 'slime)
+;;  (slime-setup)
 
   (setq-default
    ;; If non nil ELPA repositories are contacted via HTTPS whenever it's
@@ -175,18 +177,23 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         ;;solarized-dark
-                         ;;monokai
-                         nimbus 
-                         ;;nimbus
-                         ;;spacemacs-dark
-                         ;;spacemacs-light
+                         nimbus
+                         ;;darktooth
+                         ;; soothe
+                         ;; gotham
+                         ;; solarized-dark
+                         ;; monokai
+                         ;; solarized-dark
+                         ;; spacemacs-dark
+                         ;; spacemacs-light
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Courier New"
+   ;;dotspacemacs-default-font '("Source Code Por"
+   ;;dotspacemacs-default-font '("Courier New"
+   dotspacemacs-default-font '("Source Code Pro"
                                :size 14
                                :weight normal
                                :width normal
@@ -314,11 +321,10 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers '(
-                               :relative nil
-                               :enabled-for-modes prog-mode
-                               :disabled-for-modes c-mode c++-mode go-mode
-                               )
+   ;;dotspacemacs-line-numbers 't
+   dotspacemacs-line-numbers '(:relative nil
+                                         :enabled-for-modes prog-mode
+                                         :disabled-for-modes c-mode c++-mode go-mode)
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -449,6 +455,11 @@ you should place your code here."
         '((sequencep "TODO(t)" "|" "DONE(d)")
           (sequencep "WAIT(w)" "DELEGATED(e)" "|" "CANCELED(c)")))
 
+  ;;配置Emacs接受UTF-8
+  ;;(set-language-environment "UTF-8")
+  ;;(set-default-coding-systems 'utf-8)
+  ;;(define-coding-system-alias 'UTF-8 'utf-8)
+
   ;;自动补全
   (require 'go-autocomplete)
 	(require 'auto-complete-config)
@@ -460,22 +471,17 @@ you should place your code here."
 ;;                            (set (make-local-variable 'company-backends) '(company-go))
 ;;                            (company-mode)))
   )
-
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(evil-want-Y-yank-to-eol nil)
- '(org-agenda-files (quote ("~/SynologyDrive/GTD/Inbox.org")))
  '(package-selected-packages
    (quote
-    (slime auto-compile yaml-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode cython-mode company-anaconda anaconda-mode pythonic web-mode tagedit slim-mode scss-mode sass-mode pug-mode haml-mode emmet-mode company-web web-completion-data imenu-list web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help disaster company-c-headers cmake-mode clang-format go-autocomplete wgrep smex ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper ivy unfill smeargle orgit org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim mmm-mode markdown-toc markdown-mode magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit ghub treepy graphql with-editor diff-hl company-statistics company-go company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete spacemacs-common-theme nimbus-theme nimbus-theme-theme go-guru go-eldoc go-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+    (go-guru go-eldoc go-autocomplete company-go go-mode company avy evil-unimpaired f s dash yasnippet which-key undo-tree org-plus-contrib mmm-mode json-mode js2-mode ivy hydra diff-hl company-statistics coffee-mode async aggressive-indent adaptive-wrap ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:foreground "#bdbdb3" :background "gray10")))))
+ )
