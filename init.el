@@ -121,10 +121,10 @@ values."
 
 
   ; slime setup
-;;  (setq inferior-lisp-program "/usr/bin/sbcl")
-;;  (add-to-list 'load-path "~/.spacemacs.d/slime/")
-;;  (require 'slime)
-;;  (slime-setup)
+  (setq inferior-lisp-program "/usr/bin/sbcl")
+  (add-to-list 'load-path "~/.spacemacs.d/slime/")
+  (require 'slime)
+  (slime-setup)
 
   (setq-default
    ;; If non nil ELPA repositories are contacted via HTTPS whenever it's
@@ -478,10 +478,10 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (go-guru go-eldoc go-autocomplete company-go go-mode company avy evil-unimpaired f s dash yasnippet which-key undo-tree org-plus-contrib mmm-mode json-mode js2-mode ivy hydra diff-hl company-statistics coffee-mode async aggressive-indent adaptive-wrap ace-window))))
+    (slime go-guru go-eldoc go-autocomplete company-go go-mode company avy evil-unimpaired f s dash yasnippet which-key undo-tree org-plus-contrib mmm-mode json-mode js2-mode ivy hydra diff-hl company-statistics coffee-mode async aggressive-indent adaptive-wrap ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:foreground "#bdbdb3" :background "gray10" :bold nil)))))
