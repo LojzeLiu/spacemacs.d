@@ -6,6 +6,7 @@
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
 values."
+
   (setq-default
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
@@ -57,7 +58,8 @@ values."
      emacs-lisp
      git
      markdown
-     org
+     (org :variables
+      org-enable-github-support t)
      (shell :variables
             shell-default-shell 'ansi-term
             shell-default-height 30
@@ -194,7 +196,7 @@ values."
    ;;dotspacemacs-default-font '("Source Code Por"
    ;;dotspacemacs-default-font '("Courier New"
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 14
+                               :size 12
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -478,7 +480,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (slime go-guru go-eldoc go-autocomplete company-go go-mode company avy evil-unimpaired f s dash yasnippet which-key undo-tree org-plus-contrib mmm-mode json-mode js2-mode ivy hydra diff-hl company-statistics coffee-mode async aggressive-indent adaptive-wrap ace-window))))
+    (xterm-color shell-pop ox-gfm org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download multi-term htmlize gnuplot eshell-z eshell-prompt-extras esh-help slime go-guru go-eldoc go-autocomplete company-go go-mode company avy evil-unimpaired f s dash yasnippet which-key undo-tree org-plus-contrib mmm-mode json-mode js2-mode ivy hydra diff-hl company-statistics coffee-mode async aggressive-indent adaptive-wrap ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
