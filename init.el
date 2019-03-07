@@ -32,6 +32,11 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     auto-completion
+     better-defaults
+     git
+     markdown
+     version-control
      yaml
      (python :variables
              python-sort-imports-on-save t
@@ -53,10 +58,7 @@ values."
      ;; ----------------------------------------------------------------
      ;;helm
      imenu-list
-     auto-completion
-     better-defaults
      emacs-lisp
-     git
      markdown
      (org :variables
       org-enable-github-support t)
@@ -67,7 +69,6 @@ values."
             shell-default-position 'bottom)
      ;;spell-checking
      ;;syntax-checking
-     version-control
      ivy
      )
    ;; List of additional packages that will be installed without being
@@ -76,6 +77,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
                                       go-autocomplete
+                                      youdao-dictionar
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -380,8 +382,6 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-  (setq tramp-ssh-controlmaster-options
-        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   ;; define the refile targets
   (defvar org-agenda-dir "" "gtd org files location")
   (setq-default org-agenda-dir "~/SynologyDrive/GTD")
@@ -468,11 +468,15 @@ you should place your code here."
 	(ac-config-default)
   (setq ac-use-menu-map t)
 
+  (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
+  (load custom-file 'no-error 'no-message)
+
 ;;  (add-hook 'go-mode-hook 'company-mode)
 ;;  (add-hook 'go-mode-hook (lambda ()
 ;;                            (set (make-local-variable 'company-backends) '(company-go))
 ;;                            (company-mode)))
   )
+<<<<<<< HEAD
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -487,3 +491,5 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:foreground "#bdbdb3" :background "gray10" :bold nil)))))
+=======
+>>>>>>> a5917af9a5cec91fa682036376c86de56c3c3d81
