@@ -62,7 +62,8 @@ values."
      emacs-lisp
      markdown
      (org :variables
-      org-enable-github-support t)
+          org-enable-github-support t
+          )
      (shell :variables
             shell-default-shell 'ansi-term
             shell-default-height 30
@@ -71,6 +72,9 @@ values."
      ;;spell-checking
      ;;syntax-checking
      ivy
+     (plantuml :variables
+               org-plantuml-jar-path '"~/.spacemacs.d/plantuml/plantuml.jar"
+               )
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -196,8 +200,6 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   ;;dotspacemacs-default-font '("Source Code Por"
-   ;;dotspacemacs-default-font '("Courier New"
    dotspacemacs-default-font '("Source Code Pro"
                                :size 12
                                :weight normal
@@ -477,3 +479,17 @@ you should place your code here."
 ;;                            (set (make-local-variable 'company-backends) '(company-go))
 ;;                            (company-mode)))
   )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (plantuml-mode yapfify yaml-mode xterm-color ws-butler winum which-key wgrep web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org tagedit spaceline smex smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs request rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox ox-gfm orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file nimbus-theme neotree mwim multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint json-mode js2-refactor js-doc ivy-hydra indent-guide imenu-list hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make google-translate golden-ratio go-guru go-eldoc go-autocomplete gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump disaster diminish diff-hl define-word cython-mode counsel-projectile company-web company-tern company-statistics company-go company-c-headers company-anaconda column-enforce-mode coffee-mode cmake-mode clean-aindent-mode clang-format auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ac-ispell))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:foreground "#bdbdb3" :background "gray10" :bold nil)))))
