@@ -32,6 +32,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     ;;yaml
      auto-completion
      better-defaults
      git
@@ -476,20 +477,3 @@ you should place your code here."
 ;;                            (set (make-local-variable 'company-backends) '(company-go))
 ;;                            (company-mode)))
   )
-<<<<<<< HEAD
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (xterm-color shell-pop ox-gfm org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download multi-term htmlize gnuplot eshell-z eshell-prompt-extras esh-help slime go-guru go-eldoc go-autocomplete company-go go-mode company avy evil-unimpaired f s dash yasnippet which-key undo-tree org-plus-contrib mmm-mode json-mode js2-mode ivy hydra diff-hl company-statistics coffee-mode async aggressive-indent adaptive-wrap ace-window))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:foreground "#bdbdb3" :background "gray10" :bold nil)))))
-=======
->>>>>>> a5917af9a5cec91fa682036376c86de56c3c3d81
