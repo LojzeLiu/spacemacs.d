@@ -464,9 +464,9 @@ you should place your code here."
           (sequencep "WAIT(w)" "DELEGATED(e)" "|" "CANCELED(c)")))
 
   ;;配置Emacs接受UTF-8
-  ;;(set-language-environment "UTF-8")
-  ;;(set-default-coding-systems 'utf-8)
-  ;;(define-coding-system-alias 'UTF-8 'utf-8)
+  (set-language-environment "UTF-8")
+  (set-default-coding-systems 'utf-8)
+  (define-coding-system-alias 'UTF-8 'utf-8)
 
   ;;自动补全
   (require 'go-autocomplete)
