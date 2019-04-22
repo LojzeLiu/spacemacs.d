@@ -43,7 +43,9 @@ values."
      (python :variables
              python-sort-imports-on-save t
              python-enable-yapf-format-on-save t
-             python-test-runner 'pytest)
+             ;;python-indent-offset
+             ;;python-test-runner 'pytest
+             )
      html
      javascript
      (go :variables
