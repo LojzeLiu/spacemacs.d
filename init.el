@@ -32,6 +32,8 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     nginx
+     sql
      vimscript
      ;;yaml
      auto-completion
