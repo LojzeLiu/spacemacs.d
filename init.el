@@ -413,7 +413,7 @@ you should place your code here."
   ;;add multi-file journal
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline org-agenda-file-gtd "Workspace")
-           "* TODO [#B] [%] %?\n  %i\n** Comment:\n"
+           "* TODO [#B] [%] %t %?\n  %i\n** Comment:\n"
            :empty-lines 1)
           ("n" "notes" entry (file+headline org-agenda-file-note "Quick notes")
            "* %?\n  %i\n %U"
